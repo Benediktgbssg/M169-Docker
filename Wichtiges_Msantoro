@@ -1,0 +1,16 @@
+# Docker Port Wechseln
+
+root@lp-22-04:/home/vmadmin# docker pull docker/getting-started
+root@lp-22-04:/home/vmadmin# docker run -d -p 8080:80 docker/getting-started
+a6731358826df2a9a7022daa0bbc303e3a7eb0c114e58c824e86cb7fe621fcbe
+root@lp-22-04:/home/vmadmin# 
+
+# Gehe nun in einen Webrowser und öffne localhost:8080 (angegebener Port)
+
+-----------------------------------------
+
+# Docker Portainer --> GUI Container etc...
+
+# Gehe nun in einen Webrowser und öffne localhost:9443
+
+----------------------------------------

@@ -1,0 +1,13 @@
+Dossier Services mit Containern bereitstellen
+(Docker)
+
+--------------------------------------------------------------
+
+1.2 Container interaktiv verwenden
+
+  1. Hersteller-Name
+	2. Sudo docker pull [docker_image]
+	3. Der Befehl ist nicht installiert da die Version sehr Minimal ist
+	4. hello-world, docker run hello-world
+  5. docker rename CONTAINER NEW_NAME
+
