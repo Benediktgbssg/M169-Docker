@@ -3,9 +3,14 @@ Von Fabio Bilger
 
 
 
-### Container ausführen
-Befehl: docker run <name>
+### Container interaktiv verwenden
 
-  ![alt text]([http://url/to/img.png](https://github.com/Benediktgbssg/M169-Docker/blob/main/Fabio%20Bilder/docker%20_run%20.png))
-  
-<img alt="Docker Command Screenshot" src="C:\Users\fabio\OneDrive - Kt. SG BLD\Gbs\Informatik\Modul 169\Doku Docker\Bilder\docker run .png">
+| Befehle            |               |                                                                     |
+| -------------------| ------------- |---------------------------------------------------------------------|
+| docker run <name>  | Ladet einen Container herunter/führt ihn aus  | -d (Im Hintergrund)|
+| docker ps -a       | Zeigt einem Informationen über den Container an wie zum Beispiel den richtigen Namen| lalala |
+| docker rm          | Löscht einen Container wieder | lalala |
+ 
+
+
+
