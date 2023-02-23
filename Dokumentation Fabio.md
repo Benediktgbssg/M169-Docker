@@ -7,7 +7,7 @@ Von Fabio Bilger
 
 | Befehle            |               |                                                                     |
 | -------------------| ------------- |---------------------------------------------------------------------|
-| docker run <name>  | Ladet einen Container herunter/führt ihn aus  | -d (Im Hintergrund)|
+| docker run <name>  | Ladet einen Container herunter/führt ihn aus  | -d (Im Hintergrund), --name (eigenen Namen geben)|
 | docker ps -a       | Zeigt einem Informationen über den Container an wie zum Beispiel den richtigen Namen| lalala |
 | docker rm          | Löscht einen Container wieder | lalala |
  
