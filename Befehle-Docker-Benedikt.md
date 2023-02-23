@@ -26,7 +26,7 @@ Fragen von Praxis aufgaben:
 3. Warum funktionieren die Kommandos ip addr oder ping nicht? Weil die container so abgespeckt wird damit sie klein sind das der command nicht installiert ist.
 4. Welche Namen hat ihr Container und wie können Sie diesen erneut ausführen? 
 
-# Getting started
+## Getting started
 
 docker run -d -p 8080:80 docker/getting-started
 
@@ -35,3 +35,36 @@ erklärung command:  -d für detached modus (demon)
 
 Mit portainer kann man eine grafische darstellung aufrufen.
 In dem man im browser localhost:9443 "sucht"
+
+
+# Lektion3
+### Aufgabe Mariadb:
+
+1.
+
+command zum starten:
+docker run -d --name pleasework -e MYSQL_ROOT_PASSWORD=work mariadb
+
+-d für dämond damit er im hintergrund läuft.
+--name für sptezifischen namen geben. (nicht zwingend)
+-e wird gemacht um eine eingabe zu machen (weil es im dämon modus gestartet wurde kann man ja nicht manuel eingeben) 
+
+[MYSQL_ROOT_PASSWORD=work] ist die variable namen und work ist bei mir das Password.
+
+Das ist nicht Praxistaublich weil das Password im befehl ist.
+
+2. 
+
+[docker inspect <container-name>]
+{docker inspect pleasework}
+
+Mit diesem befel kann man sehr viele Information über den Container ausgeben.
+
+### Aufgabe Mariadb Update:
+
+{docker run -d --name pleasework -e MYSQL_ROOT_PASSWORD=work -v /home/vmadmin/varlibmysql/:/var/lib/mysql mariadb}
+
+Mit [-v /home/vmadmin/varlibmysql/:/var/lib/mysql] kann man den Ordner /var/lib/mysql das im container von Mariadb mit dem Ordner home/vmadmin/varlibmysql/ das Lokal auf dem Gerät ist verbinden.
+
+Die anderen atributen wurde weiter oben erklärt.
+
