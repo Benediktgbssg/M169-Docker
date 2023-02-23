@@ -13,4 +13,6 @@ Von Fabio Bilger
  
 
 
-
+#### Docker run
+ 
+Mit "docker run -e MYSQL_ROOT_PASSWORD=eigenes Passwort" kann man den container starten und eine Passworteingabe aufrufen. Das Passwort wird ebenfalls gleich gesetzt.
