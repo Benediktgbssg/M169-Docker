@@ -68,3 +68,25 @@ Mit [-v /home/vmadmin/varlibmysql/:/var/lib/mysql] kann man den Ordner /var/lib/
 
 Die anderen atributen wurde weiter oben erklärt.
 
+
+
+
+# Lektion 4
+
+### Aufgabe 1.5 Komunikation zwischen container
+
+#### network erstellen
+
+Befehl:
+docker network create [name]
+
+### Aufgab 1.6
+
+#### Mariadb container
+docker run -d --name mariadbt --network net1 -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=dbname -e MYSQL_USER=user1 -e MYSQL_PASSWORD=user1password -v myvolume:/var/lib/mysql mariadb
+
+#### PHPmyAdmin
+docker run -d --name phpma --network net1 -p 8080:80 -e PMA_HOST=mariadbt phpmyadmin/phpmyadmin
+
+#### Wordpress
+docker run -d --name wordpress-test --network net1 -h worpress-titel -v wp-html:/var/www/html/wp-content -p 8081:80 -e WORDPRESS_DB_HOST=mariadbt -e WORDPRESS_DB_USER=user1 -e WORDPRESS_DB_NAME=dbname -e WORDPRESS_DB_PASSWORD=user1password wordpress
