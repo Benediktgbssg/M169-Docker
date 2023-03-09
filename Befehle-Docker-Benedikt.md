@@ -90,3 +90,11 @@ docker run -d --name phpma --network net1 -p 8080:80 -e PMA_HOST=mariadbt phpmya
 
 #### Wordpress
 docker run -d --name wordpress-test --network net1 -h worpress-titel -v wp-html:/var/www/html/wp-content -p 8081:80 -e WORDPRESS_DB_HOST=mariadbt -e WORDPRESS_DB_USER=user1 -e WORDPRESS_DB_NAME=dbname -e WORDPRESS_DB_PASSWORD=user1password wordpress
+
+
+### Prüfung
+#### Remove
+
+Images: docker rmi [Image name]
+
+Volumes: docker volume rm [vlume name]
