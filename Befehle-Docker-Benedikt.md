@@ -106,7 +106,11 @@ Volumes: docker volume rm [vlume name]
 
 ### Aufgabe Übung:M 158 Datenmigration - Analyse Daten
 
+
 #### Mariadb container
+Netzwerk net1 erstellen:
+docker network create net1
+
 docker run -d --name mariadbt --network net1 -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=dbname mariadb
 
 ###### Erklärung
