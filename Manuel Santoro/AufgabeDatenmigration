@@ -1,0 +1,4 @@
+docker network create net1
+docker run -d --name mariadbt --network net1 -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=dbname -e MYSQL_USER=user1 -e MYSQL_PASSWORD=user1password -v myvolume:/var/lib/mysql mariadb
+docker run -d --name phpma --network net1 -p 8080:80 -e PMA_HOST=mariadbt phpmyadmin/phpmyadmin
+
