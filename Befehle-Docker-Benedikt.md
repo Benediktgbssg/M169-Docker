@@ -98,3 +98,41 @@ docker run -d --name wordpress-test --network net1 -h worpress-titel -v wp-html:
 Images: docker rmi [Image name]
 
 Volumes: docker volume rm [vlume name]
+
+
+# Lektion 6 (Nach der Prüfung)
+
+## M158
+
+### Aufgabe Übung:M 158 Datenmigration - Analyse Daten
+
+#### Mariadb container
+docker run -d --name mariadbt --network net1 -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=dbname mariadb
+
+###### Erklärung
+
+#### PhP myadmin
+
+docker run -d --name phpma --network net1 -p 8080:80 -e PMA_HOST=mariadbt phpmyadmin/phpmyadmin
+
+###### Erklärung
+
+#### Datenbank erstellen
+
+Loge in phpMyAdmin an mit root. Das passwort das wir für root gesetzt haben ist admin.
+
+In PhpMyadmin angekommen gehen sie im Import register. Und machen sie die Optionen wie im Bild.
+
+###### Achtung
+Sie müssen noch die SQL datei bearbeiten und if exists dazu schreiben bei drop Database.
+
+
+#### Export
+
+Der Export machen wir auch in phpMyadmin. unter dem register Export.
+So sah der Export aus:
+
+
+## M 169
+
+###
