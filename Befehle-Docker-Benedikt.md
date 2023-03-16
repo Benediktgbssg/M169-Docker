@@ -122,6 +122,7 @@ docker run -d --name phpma --network net1 -p 8080:80 -e PMA_HOST=mariadbt phpmya
 Loge in phpMyAdmin an mit root. Das passwort das wir für root gesetzt haben ist admin.
 
 In PhpMyadmin angekommen gehen sie im Import register. Und machen sie die Optionen wie im Bild.
+![Bild_Import_Database_in_importtab.png](https://github.com/Benediktgbssg/M169-Docker/blob/7399aabee2173ad4af575df9cdcc3e97553896da/Bilder%20Benedikt/Bild_Import_Database_in_importtab.png "Bild von PhpMyadmin Import")
 
 ###### Achtung
 Sie müssen noch die SQL datei bearbeiten und if exists dazu schreiben bei drop Database.
