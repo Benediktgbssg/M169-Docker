@@ -27,8 +27,6 @@ Das habe ich als Kommentar hinzugefügt.
 docker build -t my-webserver .
 ```
 
-## Reduzierte Abschnitte
-
 <details><summary>Erklärung</summary>
 
 docker build ist der base command.
