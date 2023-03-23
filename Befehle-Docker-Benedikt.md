@@ -114,7 +114,7 @@ docker network create net1
 docker run -d --name mariadbt --network net1 -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=dbname mariadb
 
 ###### Erklärung
-
+-e MYSQL_ROOT_PASSWORD=admin // admin ist das Passwort für root.
 #### PhP myadmin
 
 docker run -d --name phpma --network net1 -p 8080:80 -e PMA_HOST=mariadbt phpmyadmin/phpmyadmin
@@ -138,7 +138,7 @@ Der Export machen wir auch in phpMyadmin. unter dem register Export.
 So sah der Export aus:
 ![Export_Fertig.png](https://github.com/Benediktgbssg/M169-Docker/blob/071afcad7ce3aa4689a2fc32f1908031281593aa/Bilder%20Benedikt/Export_Fertig.png "Fertiger Export")
 
-## M 169
+## M169
 
 ### DockerFiles
 
