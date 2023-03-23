@@ -14,6 +14,7 @@ Das habe ich als Kommentar hinzugefügt.
 ```
 # Datei Dockerfile
 ```
+
 | Syntax | Erklärung |
 | ------------- | ------------- |
 | FROM httpd:2.4  | From macht das dieses Image als Basis Image verwendet wird. Hier wird httpd verwendet mit der version 2.4  |
