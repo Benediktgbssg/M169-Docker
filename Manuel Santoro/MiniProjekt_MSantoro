@@ -1,4 +1,7 @@
 # Datei MiniProjket_Msantoro 
+
+# Version 1.0 (don't works fully)
+
 FROM ubuntu:20.04 
 LABEL Manuel Santoro "manuel.santoro@edu.gbssg.ch" 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -16,4 +19,12 @@ EXPOSE 8080
 
 CMD ["/bin/bash"]
 
+# Version 1.1
 
+FROM httpd:2.4
+LABEL Manuel Santoro "manuel.santoro@edu.gbssg.ch" 
+ARG DEBIAN_FRONTEND=noninteractive
+COPY ./santoro /var/www/html
+
+docker build -t ownsite .
+docker run -dit --name mywebsite -p 8080:80 ownsite
