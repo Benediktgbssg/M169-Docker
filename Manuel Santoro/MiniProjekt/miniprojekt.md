@@ -26,7 +26,7 @@ COPY ./santoro /var/www/html
 # Build und Run Dockerfile
 ```
 docker build -t ownsite .
-docker run -dit --name mywebsite -p 8080:80 ownsite
+docker run -d --name mywebsite -p 8080:80 ownsite
 ```
 
 ### Erklärung
