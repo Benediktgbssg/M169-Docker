@@ -38,7 +38,7 @@ my-webserver ist der Image-name des Images das gebauen wird.
 ## Image Runnen
 
 ```
-docker run -d --name web -p 8080:80 my-webserver
+docker run -d --name web -p 8080:80 -v /home/vmadmin/Desktop/dock/html_log/:/usr/local/apache2/logs/ -v /home/vmadmin/Desktop/dock/html_html/:/usr/local/apache2/htdocs/ my-webserver 
 ```
 <details><summary>Erklärung</summary>
 
