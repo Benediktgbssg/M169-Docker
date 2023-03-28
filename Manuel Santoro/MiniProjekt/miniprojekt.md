@@ -7,7 +7,7 @@ Mein eigenes Dockerfile enthält folgendes:
 FROM httpd:2.4
 LABEL Manuel Santoro "manuel.santoro@edu.gbssg.ch" 
 ARG DEBIAN_FRONTEND=noninteractive
-COPY ./santoro /var/www/html
+COPY . htmlsite2 /usr/local/apache2/htdocs/
 ```
 ### Erklärung
 |Code |Erklärung |
