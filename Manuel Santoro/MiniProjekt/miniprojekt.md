@@ -7,7 +7,7 @@ Mein eigenes Dockerfile enthält folgendes:
 FROM httpd:2.4
 LABEL Manuel Santoro "manuel.santoro@edu.gbssg.ch" 
 ARG DEBIAN_FRONTEND=noninteractive
-COPY ./santoro /var/www/html
+COPY . htmlsite2 /usr/local/apache2/htdocs/
 ```
 ### Erklärung
 |Code |Erklärung |
@@ -26,13 +26,13 @@ COPY ./santoro /var/www/html
 # Build und Run Dockerfile
 ```
 docker build -t ownsite .
-docker run -d --name mywebsite -p 8080:80 ownsite
+docker run -d --name mywebsite -p 8080:80 -v /home/vmadmin/Desktop/apacheLogs/:/usr/local/apache2/logs/ -v /home/vmadmin/Desktop/htmlsite2/:/usr/local/apache2/htdocs/ ownsite
 ```
 
 ### Erklärung
 |Code |Erklärung |
 | ----------- | ----------- |
 |**# docker build -t ownsite .** | Dieser Befehlt erstellt den Container ownsite aus dem voherigen erstellten Dockerfile |
-|**docker run -d --name mywebsite -p 8080:80 ownsite** | dieser Befehl lässt den Container im Hintergrund laufen, und gibt den name mywebsite sowie eine Portweiterleitung von 80 auf 8080 |
+|**docker run -d --name mywebsite -p 8080:80 -v /home/vmadmin/Desktop/apacheLogs/:/usr/local/apache2/logs/ -v /home/vmadmin/Desktop/htmlsite2/:/usr/local/apache2/htdocs/ ownsite** | dieser Befehl lässt den Container im Hintergrund laufen, und gibt den name mywebsite sowie eine Portweiterleitung von 80 auf 8080. Ausserdem werden die logs und die Aktuelle Seitre immer zwischen der VM und dem Container synchronisiert |
 
 
