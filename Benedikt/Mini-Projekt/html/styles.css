@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background-color: rgb(89, 168, 214);
+    font-size: 23px;
+}
+nav{
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+.nav_logo{
+    margin: 20px;
+    font-size: 30px;
+    font-family: sans-serif;
+}
+nav ul{
+    display: flex;
+}
+nav ul li{
+    height: 100%;
+    padding: 30px;
+    list-style-type: none;
+    border-bottom: 4px solid rgb(99, 197, 236);
+}
+nav ul li:hover{
+    border-bottom: 4px solid rgb(46, 123, 224);
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: sans-serif;
+}
+
+.toggle-button{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 23px;
+}
+
+.toggle-button .bar{
+    height: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 100px;
+}
+
+@media(max-width:750px){
+    .list-container{
+        display: none;
+        width: 100%;
+    }
+    .toggle-button{
+        display: flex;
+    }
+    nav{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .list-container ul{
+        flex-direction: column;
+        width: 100%;
+    }
+    .list-container li{
+        text-align: center;
+    }
+
+    .list-container.active{
+        display: flex;
+    }
+}
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: solid black 1px;
+    padding: 8px;
+}
+
+th {
+    background-color: rgb(45, 71, 156);
+    color: white;
+}
