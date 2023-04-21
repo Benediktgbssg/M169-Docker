@@ -13,7 +13,7 @@ services: # services wird gemacht damit man die einzelnen Copntainer aufteilen k
    - myvolume:/var/lib/mysql
   networks: # Netzwerk verbindung herstellen mit net 1. Wichtig: man muss das Netzwerk entweder erstellt haben oder in diesem file erstellen. net1 wird auf zeile 43 und 44 erstellt.
    - net1
-   # wollte es mit php_myadmin machen. Hat aber zu fehlern geführt. (vieleicht später nochmals probieren.)
+   # wollte es mit php_myadmin machen. Hat aber zu fehlern geführt. 
  #php_myadmin:
   #image: phpmyadmin/phpmyadmin
   #enviroment:
