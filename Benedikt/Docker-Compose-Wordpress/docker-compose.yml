@@ -1,4 +1,4 @@
-version: "3.7" # Docker compose version 3.7 es muss mit "" geschrieben werden da 3.7 als String eingelesen werden muss. Wenn es ohne "" gemacht wird, wird es als zahl eingelesen.
+version: "3.8" # Docker compose version 3.7 es muss mit "" geschrieben werden da 3.7 als String eingelesen werden muss. Wenn es ohne "" gemacht wird, wird es als zahl eingelesen.
 services: # services wird gemacht damit man die einzelnen Copntainer aufteilen kann.
  db: # service db
   image: mariadb # image namen von mariadb
@@ -8,11 +8,13 @@ services: # services wird gemacht damit man die einzelnen Copntainer aufteilen k
     MYSQL_RANDOM_ROOT_PASSWORD: 1 # Bei mir ging die Liste aufzeichnung nicht. (Theorentisch sollte mit einer Liste gehen funktionierte aber bei mir nicht.)
     MYSQL_DATABASE: dbname
     MYSQL_USER: user1
-    MYSQL_PASSWORD: user1password
+    MYSQL_USER_PASSWORD_FILE=/run/secrets/pw
   volumes: # Volume definieren. Man muss Entweder ein Volume erstellt haben oder in diesem File erstellen. WIrd bei Zeile 45 und 46 Erstellt.
    - myvolume:/var/lib/mysql
   networks: # Netzwerk verbindung herstellen mit net 1. Wichtig: man muss das Netzwerk entweder erstellt haben oder in diesem file erstellen. net1 wird auf zeile 43 und 44 erstellt.
    - net1
+  secrets:
+   - pw
    # wollte es mit php_myadmin machen. Hat aber zu fehlern geführt. 
  #php_myadmin:
   #image: phpmyadmin/phpmyadmin
@@ -34,7 +36,7 @@ services: # services wird gemacht damit man die einzelnen Copntainer aufteilen k
     WORDPRESS_DB_HOST: db:3306 # Bei mir ging die Liste aufzeichnung nicht. (Theorentisch sollte mit einer Liste gehen funktionierte aber bei mir nicht.)
     WORDPRESS_DB_NAME: dbname 
     WORDPRESS_DB_USER: user1
-    WORDPRESS_DB_PASSWORD: user1password
+    WORDPRESS_DB_PASSWORD_FILE=/home/vmadmin/Desktop/db_password
   networks: # Netzwerk verbindung herstellen mit net 1. Wichtig: man muss das Netzwerk entweder erstellt haben oder in diesem file erstellen. net1 wird auf zeile 43 und 44 erstellt.
    - net1
   ports: # Port weiterleitung
@@ -46,3 +48,6 @@ networks: # Deklarieren von Netzwerke. Hier kann man mehrere Netzwerke Definiere
 volumes: # volumes Deklarieren. Hier werden die volumes myvolume und wp-html Deklariert.
  myvolume:
  wp-html:
+secrets:
+ pw:
+  file: db_passwort.txt
