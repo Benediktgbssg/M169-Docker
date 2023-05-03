@@ -1,54 +1,60 @@
+version: '3.9'
+
 services: 
   db:  
-    image: mariadb:latest  # Verwendetes Docker-Image mariaDB
-    container_name: mariadb  # Name des Containers
-    environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
+    image: mariadb:latest
+    container_name: mariadb
+    environment:
       - MYSQL_ROOT_PASSWORD_FILE=/home/vmadmin/password
       - MYSQL_PASSWORD_FILE=/home/vmadmin/password
-      - MYSQL_DATABASE=dbname  # Name der Datenbank
-      - MYSQL_USER=user1  # Benutzername für den Datenbank-User
-    networks:  # Netzwerkkonfiguration
-      - net1  # Netzwerkname, dem dieser Service beitreten soll
-    volumes:  # Konfiguration der Volumes (Dateisystem-Abbildungen)
-      - myvolume:/var/lib/mysql  # Volume-Name und Zielpfad im Container
+      - MYSQL_DATABASE=dbname
+      - MYSQL_USER=user1
+    networks:
+      - net1
+    volumes:
+      - myvolume:/var/lib/mysql
     secrets:
       - db_root_password
       - db_password
 
-  phpma:  # Definition des phpMyAdmin-Service
-    image: phpmyadmin:latest  # Verwendetes Docker-Image
-    container_name: phpma  # Name des Containers
-    ports:  # Port-Weiterleitungen
-      - "8080:80"  # Öffentlicher Port und Zielport im Container
-    environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
-      - PMA_HOST=mariadb  # Hostname oder IP-Adresse der Datenbank
+  phpma:
+    image: phpmyadmin:latest
+    container_name: phpma
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mariadb
 
   wpress:
-    image: wordpress:latest  # Verwendetes Docker-Image
-    container_name: wordpress-test  # Name des Containers
-    restart: unless-stopped  # Verhalten beim Neustart des Containers
-    ports:  # Port-Weiterleitungen
-      - "8081:80"  # Öffentlicher Port und Zielport im Container
-    environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
-      - WORDPRESS_DB_HOST=mariadb  # Hostname oder IP-Adresse der Datenbank
-      - WORDPRESS_DB_USER=user1  # Benutzername für den Datenbank-User
-      - WORDPRESS_DB_NAME=dbname  # Name der Datenbank
-      - WORDPRESS_DB_PASSWORD_FILE=/home/vmadmin/password  # Passwort für den Datenbank-User
-    networks:  # Netzwerkkonfiguration
-      - net1  # Netzwerkname, dem dieser Service beitreten soll
-    volumes:  # Konfiguration der Volumes (Dateisystem-Abbildungen)
-      - wp-html:/var/www/html/wp-content  # Volume-Name und Zielpfad im Container
+    image: wordpress:latest
+    container_name: wordpress-test
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      - WORDPRESS_DB_HOST=mariadb
+      - WORDPRESS_DB_USER=user1
+      - WORDPRESS_DB_NAME=dbname
+      - WORDPRESS_DB_PASSWORD_FILE=/home/vmadmin/password
+    networks:
+      - net1
+    volumes:
+      - wp-html:/var/www/html/wp-content
     secrets:
       - wp_password
 
-volumes:  # Definition der Volumes
-  myvolume:  # Name des Volumes für die Datenbank
-  wp-html:  # Name des Volumes für WordPress
+volumes:
+  myvolume:
+  wp-html:
 
-networks:  #erstellen des net 1
+networks:
   net1:
     driver: bridge
 
 secrets:
-  password:
-    file: password.txt
+  db_root_password:
+    file: /home/vmadmin/db_root_password
+  db_password:
+    file: /home/vmadmin/db_password
+  wp_password:
+    file: /home/vmadmin/wp_password
