@@ -1,0 +1,58 @@
+services: 
+  db:  
+    image: mariadb:latest  # Verwendetes Docker-Image mariaDB
+    container_name: mariadb  # Name des Containers
+    environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+      - MYSQL_DATABASE=dbname  # Name der Datenbank
+      - MYSQL_USER=user1  # Benutzername für den Datenbank-User
+    networks:  # Netzwerkkonfiguration
+      - net1  # Netzwerkname, dem dieser Service beitreten soll
+    volumes:  # Konfiguration der Volumes (Dateisystem-Abbildungen)
+      - myvolume:/var/lib/mysql  # Volume-Name und Zielpfad im Container
+    secrets:
+      - db_root_password
+      - db_password
+
+  phpma:  # Definition des phpMyAdmin-Service
+    image: phpmyadmin:latest  # Verwendetes Docker-Image
+    container_name: phpma  # Name des Containers
+    ports:  # Port-Weiterleitungen
+      - "8080:80"  # Öffentlicher Port und Zielport im Container
+    environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
+      - PMA_HOST=mariadb  # Hostname oder IP-Adresse der Datenbank
+
+  wpress:
+    image: wordpress:latest  # Verwendetes Docker-Image
+    container_name: wordpress-test  # Name des Containers
+    restart: unless-stopped  # Verhalten beim Neustart des Containers
+    ports:  # Port-Weiterleitungen
+      - "8081:80"  # Öffentlicher Port und Zielport im Container
+    environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
+      - WORDPRESS_DB_HOST=mariadb  # Hostname oder IP-Adresse der Datenbank
+      - WORDPRESS_DB_USER=user1  # Benutzername für den Datenbank-User
+      - WORDPRESS_DB_NAME=dbname  # Name der Datenbank
+      - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/wp_password  # Passwort für den Datenbank-User
+    networks:  # Netzwerkkonfiguration
+      - net1  # Netzwerkname, dem dieser Service beitreten soll
+    volumes:  # Konfiguration der Volumes (Dateisystem-Abbildungen)
+      - wp-html:/var/www/html/wp-content  # Volume-Name und Zielpfad im Container
+    secrets:
+      - wp_password
+
+volumes:  # Definition der Volumes
+  myvolume:  # Name des Volumes für die Datenbank
+  wp-html:  # Name des Volumes für WordPress
+
+networks:  #erstellen des net 1
+  net1:
+    driver: bridge
+
+secrets:
+  db_password:
+  file: db_password.txt
+  db_root_password:
+  file: db_root_password.txt
+  wp_password:
+  file: wp_password.txt
