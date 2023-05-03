@@ -53,8 +53,8 @@ networks:
 
 secrets:
   db_root_password:
-    file: /home/vmadmin/db_root_password
+    file: /home/vmadmin/db_root_password.txt
   db_password:
-    file: /home/vmadmin/db_password
+    file: /home/vmadmin/db_password.txt
   wp_password:
-    file: /home/vmadmin/wp_password
+    file: /home/vmadmin/wp_password.txt
