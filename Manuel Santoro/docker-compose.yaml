@@ -51,8 +51,9 @@ networks:  #erstellen des net 1
 
 secrets:
   db_password:
-  file: db_password.txt
+    file: db_password.txt
   db_root_password:
-  file: db_root_password.txt
+    file: db_root_password.txt
   wp_password:
-  file: wp_password.txt
+    file: wp_password.txt
+
