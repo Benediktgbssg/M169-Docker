@@ -3,8 +3,8 @@ services:
     image: mariadb:latest  # Verwendetes Docker-Image mariaDB
     container_name: mariadb  # Name des Containers
     environment:  # Umgebungsvariablen, die dem Container zur Verfügung gestellt werden
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
-      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+      - MYSQL_ROOT_PASSWORD_FILE=/home/vmadmin/password
+      - MYSQL_PASSWORD_FILE=/home/vmadmin/password
       - MYSQL_DATABASE=dbname  # Name der Datenbank
       - MYSQL_USER=user1  # Benutzername für den Datenbank-User
     networks:  # Netzwerkkonfiguration
@@ -33,7 +33,7 @@ services:
       - WORDPRESS_DB_HOST=mariadb  # Hostname oder IP-Adresse der Datenbank
       - WORDPRESS_DB_USER=user1  # Benutzername für den Datenbank-User
       - WORDPRESS_DB_NAME=dbname  # Name der Datenbank
-      - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/wp_password  # Passwort für den Datenbank-User
+      - WORDPRESS_DB_PASSWORD_FILE=/home/vmadmin/password  # Passwort für den Datenbank-User
     networks:  # Netzwerkkonfiguration
       - net1  # Netzwerkname, dem dieser Service beitreten soll
     volumes:  # Konfiguration der Volumes (Dateisystem-Abbildungen)
@@ -50,10 +50,5 @@ networks:  #erstellen des net 1
     driver: bridge
 
 secrets:
-  db_password:
-    file: db_password.txt
-  db_root_password:
-    file: db_root_password.txt
-  wp_password:
-    file: wp_password.txt
-
+  password:
+    file: password.txt
